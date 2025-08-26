@@ -17,6 +17,11 @@ sayHello req = do
     let resp = defMessage & #message .~ "Hello, " <> req ^. #name
     return resp
 
+sayHelloAgain :: Proto HelloRequest -> IO (Proto HelloReply)
+sayHelloAgain req = do
+    let resp = defMessage & #message .~ "Hello gagain, " <> req ^. #name
+    return resp
+
 {-------------------------------------------------------------------------------
   Server top-level
 -------------------------------------------------------------------------------}
@@ -24,6 +29,7 @@ sayHello req = do
 methods :: Methods IO (ProtobufMethodsOf Greeter)
 methods =
       Method (mkNonStreaming sayHello)
+    $ Method (mkNonStreaming sayHelloAgain)
     $ NoMoreMethods
 
 main :: IO ()
