@@ -33,6 +33,11 @@ common lang
       OverloadedStrings
       TypeApplications
       TypeFamilies
+      ImportQualifiedPost
+      LambdaCase
+      BangPatterns
+      NumericUnderscores
+      FlexibleInstances
 
 library
   import:             lang
@@ -40,10 +45,14 @@ library
   build-tool-depends: proto-lens-protoc:proto-lens-protoc
 
   build-depends:
+    , aeson              >= 1.5 && < 2.3
+    , containers         >= 0.6 && < 0.8
+    , time               >= 1.9 && < 1.15
     , grapesy            >= 1.1 && < 1.2
     , proto-lens         >= 0.7 && < 0.8
     , proto-lens-runtime >= 0.7 && < 0.8
   exposed-modules:
+      RouteGuide
       Proto.API.Helloworld
   other-modules:
       Proto.RouteGuide
