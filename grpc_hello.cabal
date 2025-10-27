@@ -53,6 +53,7 @@ library
     , proto-lens-runtime >= 0.7 && < 0.8
   exposed-modules:
       RouteGuide
+      Proto.API.RouteGuide
       Proto.API.Helloworld
   other-modules:
       Proto.RouteGuide
