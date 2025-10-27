@@ -1,4 +1,4 @@
-module Client (main) where
+module GreeterClient (main) where
 
 import Network.GRPC.Client
 import Network.GRPC.Client.StreamType.IO

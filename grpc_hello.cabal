@@ -1,9 +1,10 @@
 cabal-version:      3.0
-name:               quickstart-tutorial
-synopsis:           Quickstart tutorial for grapesy
+name:               grpc-hello
+synopsis:           
 version:            0.1.0
 build-type:         Custom
 extra-source-files: proto/helloworld.proto
+                  , proto/route_guide.proto
 tested-with:        GHC==8.10.7
                   , GHC==9.2.8
                   , GHC==9.4.8
@@ -45,16 +46,18 @@ library
   exposed-modules:
       Proto.API.Helloworld
   other-modules:
+      Proto.RouteGuide
       Proto.Helloworld
   autogen-modules:
+      Proto.RouteGuide
       Proto.Helloworld
 
 executable greeter_server
   import:         lang
-  main-is:        Server.hs
+  main-is:        GreeterServer.hs
   hs-source-dirs: app
-  ghc-options:    -main-is Server
-  build-depends:  quickstart-tutorial
+  ghc-options:    -main-is GreeterServer
+  build-depends:  grpc-hello
 
   build-depends:
       -- inherited
@@ -62,10 +65,10 @@ executable greeter_server
 
 executable greeter_client
   import:         lang
-  main-is:        Client.hs
+  main-is:        GreeterClient.hs
   hs-source-dirs: app
-  ghc-options:    -main-is Client
-  build-depends:  quickstart-tutorial
+  ghc-options:    -main-is GreeterClient
+  build-depends:  grpc-hello
 
   build-depends:
       -- inherited
