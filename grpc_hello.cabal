@@ -38,6 +38,7 @@ common lang
       BangPatterns
       NumericUnderscores
       FlexibleInstances
+      ScopedTypeVariables
 
 library
   import:             lang
@@ -58,9 +59,11 @@ library
   other-modules:
       Proto.RouteGuide
       Proto.Helloworld
+      Paths_grpc_hello
   autogen-modules:
       Proto.RouteGuide
       Proto.Helloworld
+      Paths_grpc_hello
 
 executable greeter_server
   import:         lang
@@ -83,3 +86,28 @@ executable greeter_client
   build-depends:
       -- inherited
     , grapesy
+
+executable route_guide_server
+  import:          lang
+  main-is:         RouteServer.hs
+  hs-source-dirs:  app
+  ghc-options:     -main-is RouteServer
+  build-depends:   grpc-hello
+
+  build-depends:
+      -- inherited
+    , grapesy
+    , time
+
+executable route_guide_client
+  import:          lang
+  main-is:         RouteClient.hs
+  hs-source-dirs:  app
+  ghc-options:     -main-is RouteClient
+  build-depends:   grpc-hello
+
+  build-depends:
+      -- inherited
+    , grapesy
+    , random >= 1.2 && < 1.4
+    , text   >= 1.2 && < 2.2
